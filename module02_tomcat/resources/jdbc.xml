@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jdbc>
+    <dev id="001">
+        <username>root</username>
+        <password>123456</password>
+        <driverClass>com.mysql.cj.jdbc.Driver</driverClass>
+        <url>jdbc:mysql://localhost:3306/test?rewriteBatchedStatements=true</url>
+    </dev>
+    <test id="002">
+        <username>root</username>
+        <password>123456</password>
+        <driverClass>com.mysql.cj.jdbc.Driver</driverClass>
+        <url>jdbc:mysql://localhost:3306/test?rewriteBatchedStatements=true</url>
+    </test>
+    <formal id="003">
+        <username>root</username>
+        <password>123456</password>
+        <driverClass>com.mysql.cj.jdbc.Driver</driverClass>
+        <url>jdbc:mysql://localhost:3306/test?rewriteBatchedStatements=true</url>
+    </formal>
+</jdbc>

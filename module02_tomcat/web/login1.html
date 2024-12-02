@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login</title>
+    <style>
+      .ht {
+        text-align: center;
+        color: cadetblue;
+      }
+      .tab {
+        width: 500px;
+        border: 5px solid cadetblue;
+        margin: 0px auto;
+        border-radius: 5px;
+      }
+      .ltr td{
+        border: 1px solid powderblue;
+      }
+      .ipt {
+        border: 0px;
+        width: 50%;
+      }
+      .btn {
+        border: 2px solid powderblue;
+        border-radius: 4px;
+        width: 60px;
+        background-color: antiquewhite;
+      }
+      .btnContainer {
+        text-align: center;
+      }
+      #usernameMsg , #passwordMsg {
+            color: rgb(230, 87, 51);
+      }
+    </style>
+
+    <script>
+        function checkUsername() {
+            var usernameRegex = /^[a-zA-Z0-9]{5,10}$/
+            var usernameInput = document.getElementById('usernameInput')
+            var username = usernameInput.value
+            var usernameMsg = document.getElementById('usernameMsg')
+            if(!usernameRegex.test(username)) {
+                usernameMsg.innerText = "用户名格式有误"
+                return false
+            }
+            usernameMsg.innerText = "OK"
+            return true
+        }
+
+        function checkPassword() {
+            var passwordRegex = /^[0-9]{6}$/
+            var passwordInput = document.getElementById('passwordInput')
+            var password = passwordInput.value
+            if(!passwordRegex.test(password)) {
+                passwordMsg.innerText = "密码格式有误"
+                return false
+            }
+            passwordMsg.innerText = "OK"
+            return true
+        }
+
+        function checkForm() {
+            var f1 = checkUsername()
+            var f2 = checkPassword()
+            if(f1 == false || f2 == false) {
+                alert('用户名密码错误,无法提交')
+                return false
+            }
+            return true
+        }
+    </script>
+  </head>
+  <body>
+    <form method="post" action="/user/login" onsubmit=" return checkForm()">
+      <h1 class="ht">欢迎使用日程管理系统</h1>
+      <h3 class="ht">请登录</h3>
+      <table class="tab" cellspacing="0px">
+        <tr class="ltr">
+          <td>请输入账号</td>
+          <td>
+            <input type="text" class="ipt" id="usernameInput" onblur="checkUsername()"/>
+            <span id="usernameMsg"></span>
+          </td>
+        </tr>
+        <tr class="ltr">
+          <td>请输入密码</td>
+          <td>
+            <input type="password" class="ipt" id="passwordInput" onblur="checkPassword()"/>
+            <span id="passwordMsg"></span>
+          </td>
+        </tr>
+        <tr class="ltr">
+          <td colspan="2" class="btnContainer">
+            <input type="submit" value="登录" class="btn" />
+            <input type="reset" value="重置" class="btn"/>
+            <button class="btn"><a href="regist1.html">去注册</a></button>
+            
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
