@@ -4,7 +4,7 @@
         <username>root</username>
         <password>123456</password>
         <driverClass>com.mysql.cj.jdbc.Driver</driverClass>
-        <url>jdbc:mysql://localhost:3306/test?rewriteBatchedStatements=true</url>
+        <url>jdbc:mysql://localhost:3306/schedule_system?rewriteBatchedStatements=true</url>
     </dev>
     <test id="002">
         <username>root</username>

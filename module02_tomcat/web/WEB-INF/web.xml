@@ -3,4 +3,79 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+
+    <servlet>
+        <servlet-name>userServlet</servlet-name>
+        <servlet-class>com.java.web.practice.tomcat.servlet.UserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userServlet</servlet-name>
+        <url-pattern>/userServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>servletLifeCycle</servlet-name>
+        <servlet-class>com.java.web.practice.tomcat.servlet.ServletLifeCycle</servlet-class>
+        <!--        Tomcat 器中，定了一些系统动实例化的Servlet，自定的Servlet的load-on-startup-->
+        <!--        不要用数1-5；-->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>servletLifeCycle</servlet-name>
+        <url-pattern>/servletLifeCycle</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>servletA</servlet-name>
+        <servlet-class>com.java.web.practice.tomcat.servlet.ServletA</servlet-class>
+        <init-param>
+            <param-name>p1</param-name>
+            <param-value>v1</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>servletA</servlet-name>
+        <url-pattern>/servletA</url-pattern>
+    </servlet-mapping>
+
+    <context-param>
+        <param-name>pp1</param-name>
+        <param-value>vv1</param-value>
+    </context-param>
+
+    <servlet>
+        <servlet-name>servletRequest</servlet-name>
+        <servlet-class>com.java.web.practice.tomcat.servlet.ServletRequest</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>servletRequest</servlet-name>
+        <url-pattern>/servletRequest</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>requestForward</servlet-name>
+        <servlet-class>com.java.web.practice.tomcat.servlet.RequestForward</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>requestForward</servlet-name>
+        <url-pattern>/requestForward</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>responseRedirect</servlet-name>
+        <servlet-class>com.java.web.practice.tomcat.servlet.ResponseRedirect</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>responseRedirect</servlet-name>
+        <url-pattern>/responseRedirect</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>loggingFilter</filter-name>
+        <filter-class>com.java.web.practice.tomcat.servlet.LoggingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>loggingFilter</filter-name>
+        <url-pattern>/login.html</url-pattern>
+    </filter-mapping>
 </web-app>
