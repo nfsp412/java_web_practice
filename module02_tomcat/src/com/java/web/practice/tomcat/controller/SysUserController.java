@@ -26,28 +26,41 @@ public class SysUserController extends BaseController {
     private SysUserService userService = new SysUserServiceImpl();
 
     public void register(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+//        String username = request.getParameter("username");
+//        String password = request.getParameter("password");
+        SysUser sysUser = WebUtil.readJson(request, SysUser.class);
+        System.out.println(sysUser);
         //注册
-        int i = userService.register(new SysUser(username, password));
+//        int i = userService.register(new SysUser(username, password));
+        int i = userService.register(sysUser);
         if (i > 0) {
-            response.sendRedirect("/success.html");
+//            response.sendRedirect("/success.html");
+            WebUtil.writeJson(response,Result.ok(null));
         } else {
-            response.sendRedirect("/failed.html");
+//            response.sendRedirect("/failed.html");
+            WebUtil.writeJson(response,Result.build(null,ResultCodeEnum.USERNAME_USED));
         }
     }
 
     public void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        int i = userService.findSysUser(username, password);
+//        String username = request.getParameter("username");
+//        String password = request.getParameter("password");
+        SysUser sysUser = WebUtil.readJson(request, SysUser.class);
+        System.out.println(sysUser);
+//        int i = userService.findSysUser(username, password);
+        int i = userService.findSysUser(
+                sysUser.getUsername(),
+                sysUser.getPassword()
+        );
         if (i > 0) {
             //用户信息存入session
             HttpSession session = request.getSession();
             session.setAttribute("sysUser", i);
-            response.sendRedirect("/showSchedule.html");
+//            response.sendRedirect("/showSchedule.html");
+            WebUtil.writeJson(response,Result.ok(null));
         } else {
-            response.sendRedirect("/failed.html");
+//            response.sendRedirect("/failed.html");
+            WebUtil.writeJson(response,Result.build(null,ResultCodeEnum.USERNAME_USED));
         }
     }
 

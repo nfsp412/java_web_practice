@@ -28,6 +28,7 @@ public class JDBCUtil {
     static {
         InputStream is = JDBCUtil.class.getClassLoader().getResourceAsStream("jdbc.properties");
         Properties properties = new Properties();
+//        System.out.println(is);
         try {
             properties.load(is);
             dataSource = DruidDataSourceFactory.createDataSource(properties);
