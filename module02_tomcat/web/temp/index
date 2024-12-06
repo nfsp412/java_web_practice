@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+index
+<form method="post" action="userServlet">
+<input type="text" name="username"><br>
+<input type="submit" value="submit">
+</form>
+</body>
+</html>
