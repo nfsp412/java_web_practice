@@ -18,6 +18,6 @@ public class ResponseRedirect extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        resp.sendRedirect("servletA");
-        resp.sendRedirect("login.html");
+        resp.sendRedirect("login");
     }
 }

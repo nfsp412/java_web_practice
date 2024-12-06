@@ -36,16 +36,8 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public int findSysUser(String username, String password) {
-        SysUser sysUser = dao.getSysUserByUsername(connection, username);
-        if (sysUser == null) {
-            System.out.println("该用户不存在");
-            return -1;
-        } else if (!sysUser.getPassword().equals(password)) {
-            System.out.println("密码错误");
-            return -1;
-        }
-        return 1;
+    public SysUser findSysUser(String username, String password) {
+        return dao.getSysUserByUsername(connection, username);
     }
 
     @Override

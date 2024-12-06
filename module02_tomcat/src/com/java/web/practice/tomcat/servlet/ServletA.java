@@ -34,7 +34,7 @@ public class ServletA extends HttpServlet {
         //获取资源的路径
         String realPath = context.getRealPath("servletA");
         System.out.println(realPath);
-        String realPath1 = context.getRealPath("login.html");
+        String realPath1 = context.getRealPath("login");
         System.out.println(realPath1);
 
         //上下文路径???/module02_tomcat_Web_exploded 这个

@@ -29,15 +29,15 @@ public class SysUserController extends BaseController {
 //        String username = request.getParameter("username");
 //        String password = request.getParameter("password");
         SysUser sysUser = WebUtil.readJson(request, SysUser.class);
-        System.out.println(sysUser);
+        System.out.println("注册用户: "+sysUser);
         //注册
 //        int i = userService.register(new SysUser(username, password));
         int i = userService.register(sysUser);
         if (i > 0) {
-//            response.sendRedirect("/success.html");
+//            response.sendRedirect("/success");
             WebUtil.writeJson(response,Result.ok(null));
         } else {
-//            response.sendRedirect("/failed.html");
+//            response.sendRedirect("/failed");
             WebUtil.writeJson(response,Result.build(null,ResultCodeEnum.USERNAME_USED));
         }
     }
@@ -46,21 +46,25 @@ public class SysUserController extends BaseController {
 //        String username = request.getParameter("username");
 //        String password = request.getParameter("password");
         SysUser sysUser = WebUtil.readJson(request, SysUser.class);
-        System.out.println(sysUser);
+        System.out.println("登陆用户: "+sysUser);
 //        int i = userService.findSysUser(username, password);
-        int i = userService.findSysUser(
+        SysUser resultSysUser = userService.findSysUser(
                 sysUser.getUsername(),
                 sysUser.getPassword()
         );
-        if (i > 0) {
-            //用户信息存入session
-            HttpSession session = request.getSession();
-            session.setAttribute("sysUser", i);
-//            response.sendRedirect("/showSchedule.html");
-            WebUtil.writeJson(response,Result.ok(null));
-        } else {
-//            response.sendRedirect("/failed.html");
-            WebUtil.writeJson(response,Result.build(null,ResultCodeEnum.USERNAME_USED));
+        if (!resultSysUser.getUsername().equals(sysUser.getUsername())) {
+            System.out.println("该用户不存在");
+            WebUtil.writeJson(response,Result.build(null,ResultCodeEnum.USERNAME_ERROR));
+        } else if (!resultSysUser.getPassword().equals(sysUser.getPassword())) {
+            System.out.println("密码错误");
+            WebUtil.writeJson(response,Result.build(null,ResultCodeEnum.PASSWORD_ERROR));
+        }else if (resultSysUser == null) {
+            System.out.println("null");
+            WebUtil.writeJson(response,Result.build(null,ResultCodeEnum.USERNAME_ERROR));
+        }else {
+            //将用户uid和username返回
+            SysUser user = new SysUser(resultSysUser.getUid(), resultSysUser.getUsername());
+            WebUtil.writeJson(response,Result.ok(user));
         }
     }
 

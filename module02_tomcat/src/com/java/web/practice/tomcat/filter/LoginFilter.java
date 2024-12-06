@@ -15,7 +15,7 @@ import java.io.IOException;
  * @create 2024/12/3 16:35
  */
 
-@WebFilter(urlPatterns = {"/showSchedule.html", "/sysSchedule/*"})
+//@WebFilter(urlPatterns = {"/showSchedule", "/sysSchedule/*"})
 public class LoginFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -27,7 +27,7 @@ public class LoginFilter implements Filter {
         if (sysUser == null) {
             //用户没登录,重定向登录页
             System.out.println("用户未登录,重定向登录页");
-            response.sendRedirect("/login.html");
+            response.sendRedirect("/login");
         } else {
             filterChain.doFilter(request, response);
         }

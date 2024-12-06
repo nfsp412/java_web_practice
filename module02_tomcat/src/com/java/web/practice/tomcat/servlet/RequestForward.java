@@ -20,7 +20,7 @@ public class RequestForward extends HttpServlet
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        RequestDispatcher requestDispatcher = req.getRequestDispatcher("servletA");
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("login.html");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("login");
         requestDispatcher.forward(req,resp);
     }
 }

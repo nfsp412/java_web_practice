@@ -56,4 +56,10 @@ public class SysScheduleDaoImplTest {
         Object title = dao.getTitleById(connection, 1);
         System.out.println(title.toString());
     }
+
+    @Test
+    public void getAllByUid() {
+        List<SysSchedule> all = dao.getAllByUid(connection, 6);
+        all.forEach(System.out::println);
+    }
 }

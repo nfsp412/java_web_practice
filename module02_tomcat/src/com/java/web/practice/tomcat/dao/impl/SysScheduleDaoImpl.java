@@ -51,4 +51,10 @@ public class SysScheduleDaoImpl extends BaseDao<SysSchedule> implements SysSched
         String sql = "select title from sys_schedule where sid = ?";
         return queryValue(connection, sql, id);
     }
+
+    @Override
+    public List<SysSchedule> getAllByUid(Connection connection, int uid) {
+        String sql = "select sid, uid, title, completed from sys_schedule where uid = ?";
+        return queryList(connection,sql,uid);
+    }
 }

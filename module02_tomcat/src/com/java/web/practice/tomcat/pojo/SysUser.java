@@ -34,4 +34,9 @@ public class SysUser {
         this.username = username;
         this.password = password;
     }
+
+    public SysUser(Integer uid, String username) {
+        this.uid = uid;
+        this.username = username;
+    }
 }

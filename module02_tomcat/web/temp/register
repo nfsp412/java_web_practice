@@ -149,7 +149,7 @@
             <td colspan="2" class="btnContainer">
                 <input type="submit" value="注册" class="btn"/>
                 <input type="reset" value="重置" class="btn"/>
-                <button class="btn"><a href="login.html">去登录</a></button>
+                <button class="btn"><a href="login">去登录</a></button>
 
             </td>
         </tr>

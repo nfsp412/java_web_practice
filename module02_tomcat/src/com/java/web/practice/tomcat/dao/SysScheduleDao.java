@@ -27,4 +27,6 @@ public interface SysScheduleDao {
 
     Object getTitleById(Connection connection, int id);
 
+    List<SysSchedule> getAllByUid(Connection connection,int uid);
+
 }

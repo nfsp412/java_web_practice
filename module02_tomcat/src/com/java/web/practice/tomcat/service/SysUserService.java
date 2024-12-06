@@ -13,7 +13,7 @@ import com.java.web.practice.tomcat.pojo.SysUser;
 public interface SysUserService {
     int register(SysUser sysUser);
 
-    int findSysUser(String username,String password);
+    SysUser findSysUser(String username,String password);
 
     SysUser findSysUserByUsername(String username);
 }
