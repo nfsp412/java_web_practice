@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 引入外部属性文件 -->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+<!--    xml配置-->
+    <context:component-scan base-package="org.example"/>
+
+    <bean id="helloWorld" class="org.example.HelloWorld"/>
+
+    <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="url" value="${url}"/>
+        <property name="driverClassName" value="${driverClassName}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+    </bean>
+
+    <!--    <bean id="userController" class="org.example.controller.UserController" autowire="byName"/>-->
+
+    <!--    <bean id="service" class="org.example.service.impl.UserServiceImpl"/>-->
+
+    <!--    <bean id="service" class="org.example.service.impl.UserServiceImpl111111"/>-->
+
+
+</beans>
