@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asuka.practice.mybatis.mappers.UserMapper">
+
+    <cache/>
+
+
+    <!--    int insertUser();-->
+    <insert id="insertUser">
+        insert into ssm.t_user (username, password, age, gender, email)
+        values ('admin', '000000', 23, '男', '12345@qq.com')
+    </insert>
+
+    <!--    int deleteUser();-->
+    <delete id="deleteUser">
+        delete
+        from ssm.t_user
+        where id = 1
+    </delete>
+
+    <!--    int updateUser();-->
+    <update id="updateUser">
+        update ssm.t_user
+        set age = 100
+        where id = 2
+    </update>
+
+    <!--    User getUserById();-->
+    <select id="getUserById" resultType="com.asuka.practice.mybatis.pojo.User">
+        select *
+        from ssm.t_user
+        where id = 2
+    </select>
+
+    <!--    List<User> getUserList();-->
+    <select id="getUserList" resultType="com.asuka.practice.mybatis.pojo.User">
+        select *
+        from ssm.t_user
+    </select>
+
+    <!--    User getUserById(int id);-->
+    <select id="getUserById1" resultType="user">
+        select *
+        from ssm.t_user
+        where id = ${id};
+    </select>
+    <!--        select *-->
+    <!--        from ssm.t_user-->
+    <!--        where id = #{id}-->
+
+
+    <!--    Emp step1(Integer empId);-->
+    <resultMap id="res1" type="Emp">
+        <result column="emp_id" property="empId"/>
+        <result column="emp_name" property="empName"/>
+        <result column="age" property="age"/>
+        <result column="gender" property="gender"/>
+        <association property="dept"
+                     select="com.asuka.practice.mybatis.mappers.UserMapper.step2"
+                     column="dept_id"
+                     fetchType="eager"/>
+    </resultMap>
+    <select id="step1" resultMap="res1">
+        select *
+        from ssm.emp
+        where emp_id = #{empId}
+    </select>
+
+    <!--    Dept step2(Integer deptId);-->
+    <select id="step2" resultType="Dept">
+        select *
+        from ssm.dept
+        where dept_id = #{deptId}
+    </select>
+
+<!--    List<Page1> selectAll();-->
+    <select id="selectAll" resultType="Page1">
+        select * from ssm.page1
+    </select>
+</mapper>
+
