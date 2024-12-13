@@ -3,7 +3,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
-    <artifactId>module19_knife</artifactId>
+    <artifactId>module19_spring_boot_knife</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>module19_knife</name>
     <description>module19_knife</description>

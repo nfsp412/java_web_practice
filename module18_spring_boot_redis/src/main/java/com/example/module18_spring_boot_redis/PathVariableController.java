@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.module18_spring_boot_redis.demos.web;
+package com.example.module18_spring_boot_redis;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

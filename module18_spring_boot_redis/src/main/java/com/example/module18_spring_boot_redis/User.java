@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.module18_spring_boot_redis.demos.web;
+package com.example.module18_spring_boot_redis;
 
 /**
  * @author <a href="mailto:chenxilzx1@gmail.com">theonefx</a>
