@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/module02_tomcat/web/WEB-INF/lib/lombok-1.18.24.jar!/" />
+      <root url="jar://$PROJECT_DIR$/module02_tomcat/web/WEB-INF/lib/mysql-connector-j-8.0.33.jar!/" />
+      <root url="jar://$PROJECT_DIR$/module02_tomcat/web/WEB-INF/lib/jackson-annotations-2.13.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/module02_tomcat/web/WEB-INF/lib/dom4j-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/module02_tomcat/web/WEB-INF/lib/jackson-databind-2.13.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/module02_tomcat/web/WEB-INF/lib/druid-1.1.21.jar!/" />
+      <root url="jar://$PROJECT_DIR$/module02_tomcat/web/WEB-INF/lib/commons-dbutils-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/module02_tomcat/web/WEB-INF/lib/junit-4.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/module02_tomcat/web/WEB-INF/lib/jackson-core-2.13.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

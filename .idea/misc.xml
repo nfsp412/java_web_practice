@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/module04_mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/module04_mybatis/module05_mybatis_mbg/pom.xml" />
+        <option value="$PROJECT_DIR$/module05_mybatis_mbg/pom.xml" />
+        <option value="$PROJECT_DIR$/module06_spring/pom.xml" />
+        <option value="$PROJECT_DIR$/module07_spring_mvc/pom.xml" />
+        <option value="$PROJECT_DIR$/module08_spring_mvc_anno/pom.xml" />
+        <option value="$PROJECT_DIR$/module09_ssm/pom.xml" />
+        <option value="$PROJECT_DIR$/module10_spring_boot/pom.xml" />
+        <option value="$PROJECT_DIR$/module11_spring_boot_init/pom.xml" />
+        <option value="$PROJECT_DIR$/module12_spring_boot_backend/pom.xml" />
+        <option value="$PROJECT_DIR$/module13_spring_boot_jdbc/pom.xml" />
+        <option value="$PROJECT_DIR$/asuka-hello-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/asuka-hello-spring-boot-starter-autoconfigure/pom.xml" />
+        <option value="$PROJECT_DIR$/module14_spring_boot_customer/pom.xml" />
+        <option value="$PROJECT_DIR$/module15_spring_boot_mybatis_plus/pom.xml" />
+        <option value="$PROJECT_DIR$/module16_mybatis_x/pom.xml" />
+        <option value="$PROJECT_DIR$/module17_spring_boot_minio/pom.xml" />
+        <option value="$PROJECT_DIR$/module18_spring_boot_redis/pom.xml" />
+        <option value="$PROJECT_DIR$/module19_knife/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
