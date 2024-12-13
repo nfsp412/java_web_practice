@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigdata.mapper.UserMapper">
+
+    <cache />
+<!--    int insertUser();-->
+<!--    <insert id="insertUser">-->
+<!--        insert into t_user values(null,'admin','123456',23,'男','12345@qq.com')-->
+<!--    </insert>-->
+
+    <!--int deleteUser();-->
+<!--    <delete id="deleteUser">-->
+<!--        delete from t_user where id = 7-->
+<!--    </delete>-->
+
+    <!--int updateUser();-->
+    <update id="updateUser">
+        update t_user set username='ybc',password='123' where id = 6
+    </update>
+
+    <!--User getUserById();-->
+<!--    <select id="getUserById" resultType="com.bigdata.pojo.User1">-->
+<!--        select * from t_user where id = 2-->
+<!--    </select>-->
+
+    <!--List<User> getUserList();-->
+<!--    <select id="getUserList" resultType="com.bigdata.pojo.User1">-->
+<!--        select * from t_user-->
+<!--    </select>-->
+
+<!--    接收单个字面量参数-->
+<!--    User getUserById(int id);-->
+    <select id="getUserById" resultType="User">
+#         select * from t_user where id = ${id}
+        select * from t_user where id = #{id}
+    </select>
+
+<!--    接收多个字面量参数-->
+<!--    int insertUser(int id, String username, String password, int age, String gender, String email);-->
+<!--    #         insert into t_user values(${arg0},'${arg1}','${arg2}',${arg3},'${arg4}','${arg5}')-->
+<!--    #         insert into t_user values(#{arg0},#{arg1},#{arg2},#{arg3},#{arg4},#{arg5})-->
+<!--    #         insert into t_user values(#{param1},#{param2},#{param3},#{param4},#{param5},#{param6})-->
+<!--    <insert id="insertUser">-->
+<!--        insert into t_user values(${param1},'${param2}','${param3}',${param4},'${param5}','${param6}')-->
+<!--    </insert>-->
+
+<!--    map集合参数-->
+<!--    #             insert into t_user values(${id},'${name}','${password}',${age},'${gender}','${email}')-->
+<!--    <insert id="insertUser">-->
+<!--        insert into t_user values(#{id},#{name},#{password},#{age},#{gender},#{email})-->
+<!--    </insert>-->
+
+<!--    实体类类型参数-->
+<!--    int insertUser(User user);-->
+<!--    #         insert into t_user values(#{id},#{username},#{password},#{age},#{gender},#{email})-->
+<!--    <insert id="insertUser">-->
+<!--        insert into t_user values(${id},'${username}','${password}',${age},'${gender}','${email}')-->
+<!--    </insert>-->
+
+<!--    @Param注解-->
+<!--    int deleteUser(@Param("id") int id);-->
+<!--    #         delete from t_user where id = ${id}-->
+    <delete id="deleteUser">
+        delete from t_user where id = #{id}
+    </delete>
+
+<!--    方法1-->
+<!--    List<Map<String, Object>> getUserList();-->
+    <select id="getUserList" resultType="map">
+        select * from t_user
+    </select>
+
+    <!--List<User> testMohu(@Param("mohu") String mohu);-->
+
+
+<!--    select * from t_user where username like "%"#{mohu}"%"-->
+<!--    select * from t_user where username like '%${mohu}%'-->
+<!--    <select id="testMohu" resultType="User">-->
+<!--        select * from t_user where username like concat('%',#{mohu},'%')-->
+<!--    </select>-->
+
+    <!--int deleteMore(@Param("ids") String ids);-->
+    <delete id="deleteMore">
+        delete from t_user where id in (${ids})
+    </delete>
+
+    <!--List<User> getAllUser(@Param("tableName") String tableName);-->
+    <select id="getAllUser" resultType="User">
+        select * from ${tableName}
+    </select>
+
+    <!--int insertUser(User user);-->
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
+        insert into t_user values(#{id},#{username},#{password},#{age},#{gender},#{email})
+    </insert>
+
+    <!--
+    resultMap：设置自定义映射
+    属性：
+    id：表示自定义映射的唯一标识
+    type：查询的数据要映射的实体类的类型
+    子标签：
+    id：设置主键的映射关系
+    result：设置普通字段的映射关系
+    association：设置多对一的映射关系
+    collection：设置一对多的映射关系
+    属性：
+    property：设置映射关系中实体类中的属性名
+    column：设置映射关系中表中的字段名
+    -->
+    <resultMap id="userMap" type="User">
+        <id property="id" column="id"></id>
+        <result property="userName" column="user_name"></result>
+        <result property="password" column="password"></result>
+        <result property="age" column="age"></result>
+        <result property="sex" column="sex"></result>
+    </resultMap>
+    <!--List<User> testMohu(@Param("mohu") String mohu);-->
+    <select id="testMohu" resultMap="userMap">
+        select id,user_name,password,age,sex from t_user1 where user_name like concat('%',#{mohu},'%')
+    </select>
+
+    <resultMap id="empDeptMap" type="Emp">
+        <id column="emp_id" property="empId"/>
+        <result column="emp_name" property="empName"/>
+        <result column="age" property="age"/>
+        <result column="gender" property="gender"/>
+        <association property="dept" javaType="Dept">
+            <id column="dept_id" property="deptId"/>
+            <result column="dept_name" property="deptName"/>
+        </association>
+    </resultMap>
+<!--    <resultMap id="empDeptMap" type="Emp">-->
+<!--        <id column="emp_id" property="empId"/>-->
+<!--        <result column="emp_name" property="empName"/>-->
+<!--        <result column="age" property="age"/>-->
+<!--        <result column="gender" property="gender"/>-->
+<!--        <result column="dept_id" property="dept.deptId"/>-->
+<!--        <result column="dept_name" property="dept.deptName"/>-->
+<!--    </resultMap>-->
+            <!--Emp getEmpAndDeptByEid(@Param("eid") int eid);-->
+    <select id="getEmpAndDeptByEid" resultMap="empDeptMap">
+        select emp.*, dept.*
+        from t_emp emp
+            left join t_dept dept
+                on emp.emp_id = dept.dept_id
+        where emp.emp_id = #{eid}
+    </select>
+
+    <resultMap id="empDeptStepMap" type="Emp">
+        <id column="emp_id" property="empId"/>
+        <result column="emp_name" property="empName"/>
+        <result column="age" property="age"/>
+        <result column="gender" property="gender"/>
+        <!--
+        select：设置分步查询，查询某个属性的值的sql的标识（namespace.sqlId）
+        column：将sql以及查询结果中的某个字段设置为分步查询的条件
+        -->
+        <association property="dept"
+                     select="com.bigdata.mapper.UserMapper.getEmpDeptByStep"
+                     column="dept_id"
+                     fetchType="lazy">
+        </association>
+    </resultMap>
+    <!--Emp getEmpByStep(@Param("eid") int eid);-->
+    <select id="getEmpByStep" resultMap="empDeptStepMap">
+        select * from t_emp where emp_id = #{eid}
+    </select>
+    <!--Dept getEmpDeptByStep(@Param("did") int did);-->
+    <select id="getEmpDeptByStep" resultType="Dept">
+        select * from t_dept where dept_id = #{did}
+    </select>
+
+    <resultMap id="deptEmpMap" type="Dept">
+        <id property="deptId" column="dept_id"/>
+        <result property="deptName" column="dept_name"/>
+        <!--
+        ofType：设置collection标签所处理的集合属性中存储数据的类型
+        -->
+        <collection property="emps" ofType="Emp">
+            <id property="empId" column="emp_id"/>
+            <result property="empName" column="emp_name"/>
+            <result property="age" column="age"/>
+            <result property="gender" column="gender"/>
+        </collection>
+    </resultMap>
+    <!--Dept getDeptEmpByDid(@Param("did") int did);-->
+    <select id="getDeptEmpByDid" resultMap="deptEmpMap">
+        select dept.*,emp.*
+        from t_dept dept
+            left join t_emp emp
+                on dept.dept_id = emp.emp_id
+        where dept.dept_id = #{did}
+    </select>
+
+    <!--List<Emp> getEmpListByCondition(Emp emp);-->
+<!--    <select id="getEmpListByCondition" resultType="Emp">-->
+<!--        select * from t_emp where 1=1-->
+<!--        <if test="empName != '' and empName != null">-->
+<!--            and emp_name = #{empName}-->
+<!--        </if>-->
+<!--        <if test="age != '' and age != null">-->
+<!--            and age = #{age}-->
+<!--        </if>-->
+<!--        <if test="gender != '' and gender != null">-->
+<!--            and gender = #{gender}-->
+<!--        </if>-->
+<!--    </select>-->
+
+<!--    <select id="getEmpListByCondition" resultType="Emp">-->
+<!--        select * from t_emp-->
+<!--        <where>-->
+<!--            <if test="empName != '' and empName != null">-->
+<!--                and emp_name = #{empName}-->
+<!--            </if>-->
+<!--            <if test="age != '' and age != null">-->
+<!--                and age = #{age}-->
+<!--            </if>-->
+<!--            <if test="gender != '' and gender != null">-->
+<!--                and gender = #{gender}-->
+<!--            </if>-->
+<!--        </where>-->
+<!--    </select>-->
+
+<!--    <select id="getEmpListByCondition" resultType="Emp">-->
+<!--        select * from t_emp-->
+<!--        <trim prefix="where" suffixOverrides="and">-->
+<!--            <if test="empName != '' and empName != null">-->
+<!--                emp_name = #{empName} and-->
+<!--            </if>-->
+<!--            <if test="age != '' and age != null">-->
+<!--                age = #{age} and-->
+<!--            </if>-->
+<!--            <if test="gender != '' and gender != null">-->
+<!--                gender = #{gender}-->
+<!--            </if>-->
+<!--        </trim>-->
+<!--    </select>-->
+
+    <!--List<Emp> getEmpListByChoose(Emp emp);-->
+    <select id="getEmpListByChoose" resultType="Emp">
+        select *
+        from t_emp
+        <where>
+            <choose>
+                <when test="empName != '' and empName != null">
+                    emp_name = #{empName}
+                </when>
+                <when test="age != '' and age != null">
+                    age = #{age}
+                </when>
+                <when test="gender != '' and gender != null">
+                    gender = #{gender}
+                </when>
+                <when test="email != '' and email != null">
+                    email = #{email}
+                </when>
+            </choose>
+        </where>
+    </select>
+
+    <!--int insertMoreEmp(List<Emp> emps);-->
+    <insert id="insertMoreEmp">
+        insert into t_emp values
+        <foreach collection="emps" item="emp" separator=",">
+            (null,#{emp.empName},#{emp.age},#{emp.gender},null)
+        </foreach>
+    </insert>
+    <!--int deleteMoreByArray(int[] eids);-->
+<!--    <delete id="deleteMoreByArray">-->
+<!--        delete from t_emp where-->
+<!--        <foreach collection="eids" item="eid" separator="or">-->
+<!--            eid = #{eid}-->
+<!--        </foreach>-->
+<!--    </delete>-->
+    <!--int deleteMoreByArray(int[] eids);-->
+<!--    <delete id="deleteMoreByArray">-->
+<!--    delete from t_emp where eid in-->
+<!--    <foreach collection="eids" item="eid" separator="," open="(" close=")">-->
+<!--        #{eid}-->
+<!--    </foreach>-->
+<!--    </delete>-->
+</mapper>
+

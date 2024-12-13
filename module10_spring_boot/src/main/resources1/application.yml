@@ -1,0 +1,39 @@
+person:
+  name: zs
+  boss: true
+  birth: 2019/12/9
+  age: 11
+  interests:
+    - 篮球
+    - 足球
+  animals: [ 阿猫, 阿狗 ]
+  score: { english: 80, math: 90 }
+  salary: [ 1, 2 ]
+  pet:
+    name: 呆呆
+    weight: 11.1
+  allPets:
+    sick:
+      - { name: aa, weight: 2.1 }
+      - { name: bb, weight: 3.4 }
+    health:
+      - { name: cc, weight: 4.4 }
+
+  #spring:
+  #  mvc:
+  #    static-path-pattern: /res/**
+  #    hiddenmethod:
+  #      filter:
+  #        enabled: true
+#  resources:
+#    static-locations: [ classpath:/abc ]
+#    add-mappings: true
+spring:
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+#server:
+#  servlet:
+#    context-path: /world

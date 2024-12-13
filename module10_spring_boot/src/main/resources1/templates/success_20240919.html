@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.themeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+success页
+<h1 th:text="${msg}">msg1</h1>
+<h2>
+    <a th:href="${link}">goto baidu1</a><br>
+    <!--    下面这个有问题,会把link这个字符串理解为一个地址-->
+    <a th:href="@{link}">goto baidu2</a><br>
+</h2>
+</body>
+</html>

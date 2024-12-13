@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       https://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+<!--    指定扫描-->
+<!--    <context:component-scan base-package="com.bigdata">-->
+<!--        根据注解指定-->
+<!--        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+<!--        根据类型指定-->
+<!--        <context:include-filter type="assignable" expression="com.bigdata.scan.HelloBean"/>-->
+<!--    </context:component-scan>-->
+    
+<!--    排除-->
+<!--    <context:component-scan base-package="com.bigdata">-->
+<!--        根据注解排除-->
+<!--        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+<!--        根据类型排除-->
+<!--        <context:exclude-filter type="assignable" expression="com.bigdata.scan.HelloBean"/>-->
+<!--    </context:component-scan>-->
+
+<!--    常规方式-->
+    <context:component-scan base-package="com.bigdata" />
+<!--    开启基于注解的AOP功能-->
+    <aop:aspectj-autoproxy />
+
+<!--    <bean id="service1" class="com.bigdata.mvc.service.impl.UserServiceImpl"/>-->
+<!--    <bean id="controller1" class="com.bigdata.mvc.controller.UserController"-->
+<!--          autowire="byType"/>-->
+
+<!--    <bean id="service1" class="com.bigdata.mvc.service.impl.UserServiceImpl"/>-->
+<!--    <bean id="controller1" class="com.bigdata.mvc.controller.UserController">-->
+<!--        <property name="userService" ref="service1"/>-->
+<!--    </bean>-->
+
+
+<!--    <bean class="com.bigdata.factory.UserFactoryBean"/>-->
+
+<!--    <bean class="com.bigdata.process.MyBeanProcessor"/>-->
+
+
+<!--    <bean class="com.bigdata.life.Car"-->
+<!--          init-method="f1"-->
+<!--          destroy-method="f2"/>-->
+
+
+<!--    <bean class="com.bigdata.ioc.User" scope="singleton"-->
+<!--          p:age="1"-->
+<!--          p:name="a"/>-->
+
+
+    <!-- 引入外部属性文件 -->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <!--    配置bean-->
+    <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="url" value="${jdbc.url}"/>
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="username" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <!-- 配置 JdbcTemplate -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <!-- 装配数据源 -->
+        <property name="dataSource" ref="druidDataSource"/>
+    </bean>
+
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="druidDataSource" />
+    </bean>
+    <!--
+    开启事务的注解驱动
+    通过注解@Transactional所标识的方法或标识的类中所有的方法，都会被事务管理器管理事务
+    -->
+    <!-- transaction-manager属性的默认值是transactionManager，如果事务管理器bean的id正好就
+    是这个默认值，则可以省略这个属性 -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
+
+<!--    util 统一管理list和map-->
+<!--    <util:list id="l1">-->
+<!--        <ref bean="conversionService"/>-->
+<!--        <ref bean="environment"/>-->
+<!--    </util:list>-->
+<!--    <util:set id="s1">-->
+<!--        <ref bean="conversionService"/>-->
+<!--        <ref bean="environment"/>-->
+<!--    </util:set>-->
+<!--    <util:map id="m1">-->
+<!--        <entry key="1" value="1"/>-->
+<!--        <entry key="2" value="2"/>-->
+<!--    </util:map>-->
+
+<!--    p 直接为属性赋值,简洁-->
+<!--    <bean id="pp1" class="com.bigdata.ioc.User"-->
+<!--          p:name="a"-->
+<!--          p:age="1"/>-->
+
+    <bean id="user" class="com.bigdata.ioc.User" />
+
+<!--    <bean id="i2" class="com.bigdata.ioc.MyInterfaceImpl" />-->
+
+<!--    <bean id="c2" class="com.bigdata.ioc.MyAbstractClassImpl" />-->
+
+<!--    <bean id="p1" class="com.bigdata.input.Person" >-->
+<!--        <property name="name" value="zs" />-->
+<!--        <property name="age" value="11" />-->
+<!--    </bean>-->
+
+<!--    <bean id="p2" class="com.bigdata.input.Person" >-->
+<!--        <constructor-arg value="ls" />-->
+<!--        <constructor-arg value="22" />-->
+<!--    </bean>-->
+
+<!--    <bean class="com.bigdata.special.People" >-->
+<!--        <property name="var1">-->
+<!--            <null />-->
+<!--        </property>-->
+<!--        <property name="var2" value="a &lt; b" />-->
+<!--        <property name="var3">-->
+<!--            <value><![CDATA[a < b]]></value>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+<!--    <bean name="c1" class="com.bigdata.clz.Hobby">-->
+<!--        <property name="id" value="1" />-->
+<!--        <property name="name" value="a" />-->
+<!--    </bean>-->
+<!--    <bean name="c22" class="com.bigdata.clz.Student">-->
+<!--        <property name="id" value="1"/>-->
+<!--        <property name="name" value="a"/>-->
+<!--        <property name="c1" ref="c1" />-->
+<!--    </bean>-->
+
+<!--    <bean name="c23" class="com.bigdata.clz.Student">-->
+<!--        <property name="id" value="1"/>-->
+<!--        <property name="name" value="a"/>-->
+<!--        <property name="c1">-->
+<!--            <bean class="com.bigdata.clz.Hobby">-->
+<!--                <property name="id" value="1"/>-->
+<!--                <property name="name" value="a"/>-->
+<!--            </bean>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+<!--    <bean class="com.bigdata.coll.MyArray">-->
+<!--        <property name="vars">-->
+<!--            <array>-->
+<!--                <value>a</value>-->
+<!--                <value>b</value>-->
+<!--            </array>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+<!--    <bean class="com.bigdata.coll.MyList">-->
+<!--        <property name="list">-->
+<!--            <list>-->
+<!--                <value>a</value>-->
+<!--                <value>b</value>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+<!--    <bean class="com.bigdata.coll.MySet">-->
+<!--        <property name="set">-->
+<!--            <set>-->
+<!--                <value>1</value>-->
+<!--                <value>2</value>-->
+<!--            </set>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+<!--    <bean class="com.bigdata.coll.MyMap">-->
+<!--        <property name="map">-->
+<!--            <map>-->
+<!--                <entry key="1" value="1"/>-->
+<!--                <entry key="2" value="2"/>-->
+<!--            </map>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+</beans>
