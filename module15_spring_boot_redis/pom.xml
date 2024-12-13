@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
-    <artifactId>module18_spring_boot_redis</artifactId>
+    <artifactId>module15_spring_boot_redis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>module18_spring_boot_redis</name>
     <description>module18_spring_boot_redis</description>

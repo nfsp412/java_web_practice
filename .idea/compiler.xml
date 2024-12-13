@@ -7,31 +7,33 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="module12_spring_boot_jdbc" />
         <module name="asuka-hello-spring-boot-starter-autoconfigure" />
-        <module name="module15_spring_boot_mybatis_plus" />
-        <module name="module11_spring_boot_init" />
-        <module name="module16_mybatis_x" />
+        <module name="module16_spring_boot_knife" />
         <module name="module08_spring_mvc_anno" />
-        <module name="module17_spring_boot_minio" />
+        <module name="asuka-hello-spring-boot-starter-custom" />
         <module name="module10_spring_boot" />
-        <module name="module19_knife" />
         <module name="module09_ssm" />
         <module name="asuka-hello-spring-boot-starter" />
+        <module name="module11_backend" />
         <module name="module06_spring" />
+        <module name="module13_spring_boot_mybatis_plus" />
+        <module name="module14_spring_boot_minio" />
         <module name="module05_mybatis_mbg" />
+        <module name="module15_spring_boot_redis" />
         <module name="module07_spring_mvc" />
         <module name="module04_mybatis" />
-        <module name="module12_spring_boot_backend" />
-        <module name="module13_spring_boot_jdbc" />
-        <module name="module18_spring_boot_redis" />
-        <module name="module14_spring_boot_customer" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="module11_spring_boot_init" target="1.8" />
+      <module name="module16_mybatis_x" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="module10_spring_boot" options="-parameters" />
-      <module name="module12_spring_boot_backend" options="-parameters" />
+      <module name="module11_backend" options="-parameters" />
     </option>
   </component>
 </project>

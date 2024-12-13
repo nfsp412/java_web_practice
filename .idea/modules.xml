@@ -6,7 +6,6 @@
       <module fileurl="file://$PROJECT_DIR$/module01_xml_dom4j/module01_xml_dom4j.iml" filepath="$PROJECT_DIR$/module01_xml_dom4j/module01_xml_dom4j.iml" />
       <module fileurl="file://$PROJECT_DIR$/module02_tomcat/module02_tomcat.iml" filepath="$PROJECT_DIR$/module02_tomcat/module02_tomcat.iml" />
       <module fileurl="file://$PROJECT_DIR$/module03_headline/module03_headline.iml" filepath="$PROJECT_DIR$/module03_headline/module03_headline.iml" />
-      <module fileurl="file://$PROJECT_DIR$/module09_ssm.iml" filepath="$PROJECT_DIR$/module09_ssm.iml" />
     </modules>
   </component>
 </project>

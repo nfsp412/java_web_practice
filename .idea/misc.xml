@@ -23,7 +23,21 @@
         <option value="$PROJECT_DIR$/module17_spring_boot_minio/pom.xml" />
         <option value="$PROJECT_DIR$/module18_spring_boot_redis/pom.xml" />
         <option value="$PROJECT_DIR$/module19_knife/pom.xml" />
+        <option value="$PROJECT_DIR$/module19_spring_boot_knife/pom.xml" />
+        <option value="$PROJECT_DIR$/asuka-hello-spring-boot-starter-custom/pom.xml" />
+        <option value="$PROJECT_DIR$/module12_backend/pom.xml" />
+        <option value="$PROJECT_DIR$/module11_backend/pom.xml" />
+        <option value="$PROJECT_DIR$/module12_spring_boot_jdbc/pom.xml" />
+        <option value="$PROJECT_DIR$/module13_spring_boot_mybatis_plus/pom.xml" />
+        <option value="$PROJECT_DIR$/module14_spring_boot_minio/pom.xml" />
+        <option value="$PROJECT_DIR$/module15_spring_boot_redis/pom.xml" />
+        <option value="$PROJECT_DIR$/module16_spring_boot_knife/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/module16_mybatis_x/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
